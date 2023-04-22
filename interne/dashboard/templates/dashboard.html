@@ -1,0 +1,86 @@
+{% extends "header.html" %}
+
+{% block content %}
+<div class="page">
+    
+        <div class="side-bar-expand"><a id="toggler"><i class="fa-solid fa-chevron-down" style="color: #ffffff;"></i></a></div>
+            <div class="sidebar">
+                <div class="strip"></div>
+                <ul class="menu-side">
+                    <a href="#"><li class="menu-item"><i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i></li></a>
+                    <a href="#"><li class="menu-item"><i class="fa-solid fa-list-check" style="color: #ffffff;"></i></li></a>
+                    <a href="#"><li class="menu-item"><i class="fa-solid fa-comment" style="color: #ffffff;"></i> </li></a>
+                    <a href="#"><li class="menu-item"><i class="fa-solid fa-gears" style="color: #ffffff;"></i> </li></a>
+                    <a href="#"><div class="bottom-items">
+                        <hr>
+                        <a href="#"><li class="menu-item"><i class="fa-solid fa-user" style="color: #ffffff;"></i></li></a>
+                        <a href="#"><li class="menu-item"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></li></a>
+                    </div>     
+                </ul>
+            </div>
+   
+    <div class="main">
+       <div class="dash-top">
+        <div class="card">
+            <h3>Pinned</h3>
+            <div class="watch-item">
+            {% for ticker, price in mylist %}
+                <h1>{{ ticker }}</h1>
+                <h2 class="item-price">{{ price }}</h2>
+            {% endfor %}
+            </div>  
+        </div>
+
+        <div class="card">
+            
+        </div>
+
+        <div class="card">
+            
+        </div>
+       </div>
+    </div>
+</div> 
+
+<script>
+    clearInterval(runLong);
+    
+    var runLong = window.setInterval(function(){
+        $(".watch-item ").load(location.href + " .watch-item", function(){
+
+        });
+    }, 1000);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script>
+        var prices = '{{ prices }}'
+        
+       
+        console.log(prices)
+          var options = {
+        chart: {
+          type: 'line'
+        },
+        series: [{
+          name: 'Closing price',
+          data: prices
+        }],
+        xaxis: {
+          categories: ['Mon','Tue','Wed','Thur','Fri']
+        }
+      }
+      
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      
+      chart.render();
+      </script>
+
+
+<script>
+   
+   
+    
+</script>
+
+{% endblock %} 
