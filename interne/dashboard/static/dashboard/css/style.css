@@ -17,8 +17,6 @@ body, html{
 .page{
     display: grid;
     grid-template-columns:5vw 95vw;
-   
-    
 }
 
 .side-bar-expand{
@@ -121,6 +119,14 @@ body, html{
 .watch-item{
     margin-bottom: 10px;
     
+}
+
+.dash-bottom{
+
+}
+
+.dash-bottom .card{
+    width: 100%;
 }
 
 @media (max-width: 900px) {
