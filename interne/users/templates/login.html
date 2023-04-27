@@ -10,14 +10,14 @@
 </head>
 <body>
     <div class="form-container">
+        {{ msg }}
         <form action="" method="POST">
             {% csrf_token %} 
-            <input class="input-box" type="text" placeholder="Enter Username" name="username" required><br>
-            <input class="input-box" type="password" placeholder="Enter Password" name="password" required><br>
+            {{ form.as_p }}
             <input type="submit" value="Login" class="">
         </form>
         <div class="links">
-            <a href="#">Don't have an account yet? Create one</a><br>
+            <a href="/register">Don't have an account yet? Create one</a><br>
             <a href="#">Forgotten password?</a>
         </div>
     </div>

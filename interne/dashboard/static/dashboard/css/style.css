@@ -29,7 +29,7 @@ body, html{
     background-color: #121110;
     color: white;
     
-    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.6);
 }
 
 .sidebar .strip{
@@ -62,7 +62,6 @@ body, html{
     
 }
 
-
 .sidebar .menu-item:hover{
     background-color: rgba(0, 0, 0, 0.9);
     transition:linear .2s;
@@ -94,14 +93,13 @@ body, html{
     
 }
 
-
 .card{
     width: auto;
     height: 15rem;
     padding: 10px;
     margin: 2px;
     background-color: white;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .card h3{
@@ -122,11 +120,11 @@ body, html{
 }
 
 .dash-bottom{
-
+    width: 3fr;
 }
 
 .dash-bottom .card{
-    width: 100%;
+    
 }
 
 @media (max-width: 900px) {

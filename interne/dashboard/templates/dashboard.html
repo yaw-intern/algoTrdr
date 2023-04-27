@@ -14,25 +14,27 @@
                     <a href="#"><div class="bottom-items">
                         <hr>
                         <a href="#"><li class="menu-item"><i class="fa-solid fa-user" style="color: #ffffff;"></i></li></a>
-                        <a href="#"><li class="menu-item"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></li></a>
+                        <a href="/logout"><li class="menu-item"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></li></a>
                     </div>     
                 </ul>
             </div>
    
     <div class="main">
+      
        <div class="dash-top">
         <div class="card">
-            <h3>Pinned</h3>
-            <div class="watch-item">
-            {% for ticker, price in mylist %}
-                <h1>{{ ticker }}</h1>
-                <h2 class="item-price">{{ price }}</h2>
-            {% endfor %}
-            </div>  
+          <h2>Welcome, {{ user.username }}</h2>
+          <p><h1>Portfolio Performance</h1><small>(Last Month)</small></p>
+          <h1 style="text-align: center; margin-top: 20px; color:#207537; font-size:3rem">+4%</h1>
         </div>
 
         <div class="card">
-            
+          <h3>Pinned</h3>
+          <div class="watch-item">
+          {% for ticker, price in mylist %}
+            <div style="margin-bottom: 20px; margin-left: 5%"><h1>{{ ticker}} <small>{{ price }}</small></h1></div>
+          {% endfor %}
+          </div>  
         </div>
 
         <div class="card">
