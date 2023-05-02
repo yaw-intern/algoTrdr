@@ -29,9 +29,8 @@ SECRET_KEY = [os.environ['SECRET']]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://'+ os.environ['WEBSITE_HOSTNAME'], 'https://*.127.0.0.1/']
+ALLOWED_HOSTS = ['https://'+ os.environ['WEBSITE_HOSTNAME'],'https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net']
 
-CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
 # Application definition
 
 INSTALLED_APPS = [

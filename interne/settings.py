@@ -29,7 +29,7 @@ SECRET_KEY = ("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://'+ os.environ['WEBSITE_HOSTNAME'], 'https://*.127.0.0.1/']
+ALLOWED_HOSTS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net','https://'+ os.environ['WEBSITE_HOSTNAME']]
 
 
 # Application definition
