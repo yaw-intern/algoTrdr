@@ -29,7 +29,7 @@ SECRET_KEY = [os.environ['SECRET']]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
+ALLOWED_HOSTS = ['https://'+ os.environ['WEBSITE_HOSTNAME'], 'https://*.127.0.0.1/']
 
 CSRF_TRUSTED_ORIGINS = ['https://'+ os.environ['WEBSITE_HOSTNAME']]
 # Application definition
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'interne.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'algotrader': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('NAME'),
         'USER': os.environ.get('USER'),
