@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'landing',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://algoplatform.azurewebsites.net/']
+CSRF_TRUSTED_ORIGINS = ['https://algoplatform.azurewebsites.net/', 'https://www.algoplatform.azurewebsites.net/']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
