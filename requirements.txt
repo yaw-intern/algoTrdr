@@ -26,3 +26,4 @@ urllib3==1.26.15
 webencodings==0.5.1
 yfinance==0.2.18
 whitenoise
+dotenv
