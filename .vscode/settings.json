@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/01678c74-ec30-4bac-98c0-6fa943c8e7f9/resourceGroups/algotradr/providers/Microsoft.Web/sites/abuakunathan",
+    "appService.deploySubpath": "."
+}
