@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'interne.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'algotrader': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.environ.get('NAME'),
         'USER': os.environ.get('USER'),
