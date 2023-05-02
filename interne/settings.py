@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'algotrader',
         'USER': 'abuakunathan',
-        'PASSWORD': ("PASSWORD"),
+        'PASSWORD': '!Zekrom1245&',
         'HOST': 'algotraddb.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
