@@ -29,7 +29,7 @@ SECRET_KEY = ("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net','https://'+ os.environ['WEBSITE_HOSTNAME']]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'landing',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net','https://'+ os.environ['WEBSITE_HOSTNAME']]
+CSRF_TRUSTED_ORIGINS = ['https://algoplatform.azurewebsites.net/']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'interne.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'algotrader',
+        'NAME': os.environ.get('NAME'),
         'USER': os.environ.get('USER'),
         'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': 'algotraddb.mysql.database.azure.com',
