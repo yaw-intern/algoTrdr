@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'interne.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('NAME'),
+        'NAME': 'algotrader',
         'USER': os.environ.get('USER'),
         'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': 'algotraddb.mysql.database.azure.com',
