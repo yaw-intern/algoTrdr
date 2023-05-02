@@ -29,7 +29,7 @@ SECRET_KEY = ("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+ALLOWED_HOSTS = ['https://'+ os.environ['WEBSITE_HOSTNAME'], 'https://*.127.0.0.1/']
 
 
 # Application definition
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'landing',
 ]
 
-CSRF_TRUSTED_ORIGINS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
+CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net','https://'+ os.environ['WEBSITE_HOSTNAME']]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
