@@ -28,3 +28,4 @@ yfinance==0.2.18
 whitenoise
 python-dotenv
 mysqlclient
+django-environ
