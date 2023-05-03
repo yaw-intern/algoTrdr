@@ -11,13 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-import environ
 
-env = environ.Env()
-environ.Env.read_env()
-
-load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -92,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'algotrader',
         'USER': 'abuakunathan',
-        'PASSWORD': env('PASSWORD'),
+        'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': 'algotraddb.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
