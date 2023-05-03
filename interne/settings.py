@@ -9,11 +9,9 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 from dotenv import load_dotenv
-
-import os
 
 load_dotenv()
 
@@ -90,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'algotrader',
         'USER': 'abuakunathan',
-        'PASSWORD': ("PASSWORD"),
+        'PASSWORD': str(os.getenv('PASSWORD')),
         'HOST': 'algotraddb.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
