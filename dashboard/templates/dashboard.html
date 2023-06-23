@@ -7,9 +7,9 @@
             <div class="sidebar">
                 <div class="strip"></div>
                 <ul class="menu-side">
-                    <a href="#"><li class="menu-item"><i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i></li></a>
+                    <a href="#" id="load-dash"><li class="menu-item"><i class="fa-sharp fa-solid fa-chart-simple" style="color: #ffffff;"></i></li></a>
                     <a href="#"><li class="menu-item"><i class="fa-solid fa-list-check" style="color: #ffffff;"></i></li></a>
-                    <a href="#"><li class="menu-item"><i class="fa-solid fa-comment" style="color: #ffffff;"></i> </li></a>
+                    <a href="#" id="load-chat"><li class="menu-item"><i class="fa-solid fa-comment" style="color: #ffffff;"></i> </li></a>
                     <a href="#"><li class="menu-item"><i class="fa-solid fa-gears" style="color: #ffffff;"></i> </li></a>
                     <a href="#"><div class="bottom-items">
                         <hr>
@@ -29,7 +29,7 @@
         </div>
 
         <div class="card">
-          <h3>Pinned</h3>
+          <h3>Pinned <a href="#"><i class="fa-sharp fa-solid fa-pencil" style="color: #bdbdbd;"></i></a></h3>
           <div class="watch-item">
           {% for ticker, price in mylist %}
             <div style="margin-bottom: 20px; margin-left: 5%"><h1>{{ ticker}} <small>{{ price }}</small></h1></div>
@@ -38,7 +38,13 @@
         </div>
 
         <div class="card">
+          
+          <form method="POST">
+            {% csrf_token %}
+            {{ editForm }}
             
+           <input type="submit"></input>
+          </form>
         </div>
        </div>
 
@@ -46,10 +52,51 @@
         <div class="card"></div>
        </div>
     </div>
+    <!-- Chat box-->
+    
+
+   
+    <div class="chat">
+      <!-- <div class="search-bar">
+        <input placeholder="Search for a user"><i class="fa-sharp fa-solid fa-magnifying-glass" style="color: #000000;"></i></input>
+      </div>
+      <div class="all-messages">
+        <a href="#">
+          <div class="message">
+              <div class="usr-pfp">
+                <img class="pfp" src="https://i.imgur.com/NNYZ4nR.png" />
+              </div>
+              <div class="content">
+                Danny <small>• 12:45PM</small>
+                <div class="msg-preview">Let me kiss you dawg!</div>
+              </div>
+          </div>
+        </a>
+
+        <a href="#">
+          <div class="message">
+            <div class="usr-pfp">
+              <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
+            </div>
+            <div class="content">
+              Carl <small>• 12:45PM</small>
+              <div class="msg-preview">Hey, you free to discuss your analysis of tomorrows S&P?</div>
+            </div>
+          </div>
+        </a>
+      </div> -->
+    </div>
     
 </div> 
 
 <script>
+  $(document).ready(function(){
+  $(".chat").load('/chat/pie');
+ 
+ });
+</script>
+
+<!-- <script>
     clearInterval(runLong);
     
     var runLong = window.setInterval(function(){
@@ -57,6 +104,21 @@
 
         });
     }, 1000);
+</script> -->
+
+<script>
+$(document).ready(function(){
+  $("#load-chat").click(function(){
+  $(".main").load("/chat");
+ 
+ });
+
+ $("#load-dash").click(function(){
+  $(".page").load("/dashboard");
+  
+ });
+});
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

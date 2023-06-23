@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('admin/', admin.site.urls),
     path('', include('landing.urls')),
+     path("chat/", include("usr_chat.urls")),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

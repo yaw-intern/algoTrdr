@@ -1,0 +1,138 @@
+<!-- chat/templates/chat/room.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+    <style>
+        /* STYLE CHAT */
+    .chat{
+        
+        background-color: rgb(255, 255, 255);
+        right: 0;
+        bottom: 0;
+        padding: 20px;
+        margin-right: 10px;
+        /* height: 90vh; */
+        margin-bottom: 10px;
+    }
+
+    .chat .search-bar{
+        text-align: center;
+    }
+
+    .chat .search-bar input{
+        width:75%;
+        padding: 10px;
+        margin: 20px 10px 5px 10px;
+        border: none;
+        background-color: #F2F2F2;
+    }
+
+    .chat .all-messages{
+        overflow-y: scroll;
+        height: 85%;
+        
+    }
+/* ======================== */
+
+/* STYLE SCROLLBAR */
+    /* width */
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+/* ===================== */
+
+.chat .message{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 66px auto;
+    gap: 5px;
+}
+
+.pfp{
+    width: 64px;
+    height: 64px;
+}
+
+.chat a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.chat .message .usr-pfp{
+    width: 64px;
+    height: 64px;
+    background-color: #ECA3A3;
+}
+
+#chat-message-input{
+    margin-top: 30px;
+    bottom: 0;
+    margin-bottom: 20px;
+    padding: 20px;
+    width:fit-content;
+    position: fixed;
+    border: none;
+    background-color: #e2e2e2;
+}
+
+input:focus{
+    outline: none;
+}
+
+.allmsg{
+    margin-bottom: 30px;
+}
+
+#chat-message-submit{
+    padding: 5px;
+    bottom: 0;
+    right:0;
+    margin-bottom: 30px;
+    margin-right: 2rem;
+    position: fixed;
+}
+    </style>
+</head>
+<body>
+
+    <div class="chat">
+        <div id="allmsg" class="all-messages">
+                  
+                        <div class="message">
+                            <div class="usr-pfp">
+                              <img class="pfp" src="https://i.imgur.com/NNYZ4nR.png" />
+                            </div>
+                            <div class="content">
+                              Danny <small>• 12:45PM</small>
+                              <div id="msg-content" class="msg-preview">Let me kiss you dawg!</div>
+                            </div>
+                        </div> 
+                </div>
+                
+                <input id="chat-message-input" type="text" placeholder="Enter your message here"></input>
+                <input id="chat-message-submit" type="button" value="Send">
+    </div>
+  
+
+    
+
+</body>
+</html>
