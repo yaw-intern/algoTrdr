@@ -57,44 +57,48 @@
 
    
     <div class="chat">
-      <!-- <div class="search-bar">
-        <input placeholder="Search for a user"><i class="fa-sharp fa-solid fa-magnifying-glass" style="color: #000000;"></i></input>
-      </div>
+      <form  method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="search">
+      </form>
+      
       <div class="all-messages">
-        <a href="#">
-          <div class="message">
+       
+        
+        
+          {% if result is None %}
+            <div style="text-align: center;">No user found</div>
+          {% else %}
+          <a href="#" onclick="chat()">
+            <div class="message">
               <div class="usr-pfp">
-                <img class="pfp" src="https://i.imgur.com/NNYZ4nR.png" />
+                <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
               </div>
               <div class="content">
-                Danny <small>• 12:45PM</small>
-                <div class="msg-preview">Let me kiss you dawg!</div>
+                {{ result }} <small>• 12:45PM</small>
+                <div class="msg-preview">Start the conversation...</div>
               </div>
-          </div>
-        </a>
+            </div>
+          </a>
+          {% endif %}
+        
 
-        <a href="#">
-          <div class="message">
-            <div class="usr-pfp">
-              <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
-            </div>
-            <div class="content">
-              Carl <small>• 12:45PM</small>
-              <div class="msg-preview">Hey, you free to discuss your analysis of tomorrows S&P?</div>
-            </div>
-          </div>
-        </a>
-      </div> -->
+
+      </div>
     </div>
     
 </div> 
 
-<script>
-  $(document).ready(function(){
-  $(".chat").load('/chat/pie');
+ <script>
+  function chat(){
+    $(document).ready(function(){
+  $(".chat").load('/chat/{{currentUser}}{{result}}');
  
  });
-</script>
+  }
+ 
+</script> 
 
 <!-- <script>
     clearInterval(runLong);

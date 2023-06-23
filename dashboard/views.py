@@ -5,9 +5,15 @@ from decimal import Decimal, ROUND_UP
 from django.http import HttpResponse
 import yfinance as yf
 import pandas as pd
+from .forms import findUserForm
+from django.contrib.auth.models import User
 # Create your views here.
+
+
+
 def dashboard(request):
     if request.user.is_authenticated:
+        
         tesla = yf.Ticker('TSLA')
         ticka = tesla.info['shortName']
         teslaData = tesla.history(period="5d")['Close']
@@ -48,12 +54,29 @@ def dashboard(request):
 
         mylist = zip(tickerList, priceList)
         
-        print(priceList)
-    #data = df.to_json()[1:-1].replace('},{', '} {')
-        ctx ={
-            "mylist": mylist
-        }
+        
+        if request.method=="POST":
+            form = findUserForm(request.POST)
+            username = request.POST['usrname']
+            print("Username is ", username)
+            if User.objects.filter(username=username).exists():
+                print("Hooray!")
+                result= User.objects.get(username=username)
+            else:
+                print("No record")
+                result = None
+                
+        else:
+            result = None
+            form = findUserForm()
     
+        ctx ={
+            "mylist": mylist,
+            "form": form,
+            "result": result,
+            "currentUser": request.user.username,
+        }
+        
         return render(request, 'dashboard.html', ctx)
     else:
         return redirect('/login')
