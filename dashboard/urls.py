@@ -4,5 +4,6 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-    path('dashboard/', views.dashboard, name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('conversations/', views.conversations, name='conversations'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

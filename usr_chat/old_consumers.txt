@@ -1,6 +1,5 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
-from asgiref.sync import sync_to_async
 from django.contrib.auth import get_user_model
 import json
 from .models import Message
@@ -14,24 +13,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
-        global roomID
-        roomID = self.room_name 
-        print(roomID)
         self.room_group_name = f"chat_{self.room_name}"
-        global recepID
-
-        #check room id/ the name of the room. Split the values in the string by _ character
-        #if value x != to self.scope.user.id then update recepID to x
-
-        roomID = self.room_name.split('_')
-        roomID = list(map(int, roomID))
-        print(roomID)
-        for id in roomID:
-            if id!= self.scope['user'].id:
-                recepID = id
-                
-        roomID = self.room_name 
-        
 
         # Join room group
         await self.channel_layer.group_add(self.room_group_name, self.channel_name)
@@ -51,18 +33,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
-        recep = await self.get_other_user()
-        
-        # uID  = (int(self.scope['user'].id))
-        uID =self.user.id
-        print(uID)
-        
+
         #create new chat object
         chat = Message(
             content = message,
             sender=self.scope['user'],
-            recipient = recep,
-            roomid = roomID,
+            recipient = self.scope['user'],
         )
 
         await database_sync_to_async(chat.save)()
@@ -93,8 +69,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
         # Retrieve the current user from the database
         return User.objects.get(pk=self.scope["user"].id)
 
-    @database_sync_to_async
-    def get_other_user(self):
-        return User.objects.get(pk=recepID)
-   
     

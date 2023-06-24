@@ -61,7 +61,7 @@ def dashboard(request):
             print("Username is ", username)
             if User.objects.filter(username=username).exists():
                 print("Hooray!")
-                result= User.objects.get(username=username)
+                result= User.objects.get(username=username) 
             else:
                 print("No record")
                 result = None
@@ -81,3 +81,5 @@ def dashboard(request):
     else:
         return redirect('/login')
 
+def conversations(request):
+    return render(request, 'conversations.html')

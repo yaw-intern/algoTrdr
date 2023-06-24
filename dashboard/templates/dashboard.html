@@ -37,7 +37,7 @@
           </div>  
         </div>
 
-        <div class="card">
+        <div class="card testdiv">
           
           <form method="POST">
             {% csrf_token %}
@@ -67,21 +67,24 @@
        
         
         
+
           {% if result is None %}
             <div style="text-align: center;">No user found</div>
           {% else %}
-          <a href="#" onclick="chat()">
-            <div class="message">
-              <div class="usr-pfp">
-                <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
+          
+            <a href="#" onclick="chat()">
+              <div class="message">
+                <div class="usr-pfp">
+                  <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
+                </div>
+                <div class="content">
+                  <small>{{ result.username }}• 12:45PM</small>
+                  <div class="msg-preview">Start the conversation...</div>
+                </div>
               </div>
-              <div class="content">
-                {{ result }} <small>• 12:45PM</small>
-                <div class="msg-preview">Start the conversation...</div>
-              </div>
-            </div>
-          </a>
+            </a>
           {% endif %}
+          
         
 
 
@@ -90,15 +93,7 @@
     
 </div> 
 
- <script>
-  function chat(){
-    $(document).ready(function(){
-  $(".chat").load('/chat/{{currentUser}}{{result}}');
  
- });
-  }
- 
-</script> 
 
 <!-- <script>
     clearInterval(runLong);
@@ -112,10 +107,6 @@
 
 <script>
 $(document).ready(function(){
-  $("#load-chat").click(function(){
-  $(".main").load("/chat");
- 
- });
 
  $("#load-dash").click(function(){
   $(".page").load("/dashboard");
@@ -124,6 +115,19 @@ $(document).ready(function(){
 });
 
 </script>
+
+<script>
+  function chat(){
+      $(document).ready(function(){
+       var id1 = {{user.id}};
+       var id2 = {{result.id}};
+
+    $(".chat").load('/chat/' +Math.max(id1, id2)+'_'+Math.min(id1, id2));
+
+});
+  }
+</script> 
+
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <script>

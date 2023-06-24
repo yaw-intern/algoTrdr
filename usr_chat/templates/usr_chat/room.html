@@ -31,7 +31,7 @@
 
     .chat .all-messages{
         overflow-y: scroll;
-        height: 85%;
+        height: 80%;
         
     }
 /* ======================== */
@@ -112,14 +112,15 @@ input:focus{
     </style>
 </head>
 <body>
-    <a href="#" id="back">Back</a>
+    
     <div class="chat">
+        <a href="" id="back">Back</a>
         <div id="allmsg" class="all-messages">
             
                      
                         
                       
-            </div>
+        </div>
                 
                 <input id="chat-message-input" type="text" placeholder="Enter your message here"></input>
                 <input id="chat-message-submit" type="button" value="Send">
@@ -194,6 +195,13 @@ input:focus{
         };
     </script>
 
-
+<script>
+   function goBack(){
+            $(document).ready(function(){
+      $(".chat").load('/conversations');
+     
+     });
+        }
+</script>
 </body>
 </html>
