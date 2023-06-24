@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'usr_chat',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net']#, 'https://'+ os.environ['WEBSITE_HOSTNAME']]
+CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net', 'https://'+ os.environ['WEBSITE_HOSTNAME']]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -119,10 +119,10 @@ LOGGING = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'algotrader',#os.environ['DB_NAME'],
-        'USER': 'abuakunathan',#os.environ['DB_USER'],
-        'PASSWORD': '!Zekrom1245&',#os.environ['DB_PASS'],
-        'HOST': 'algotraddb.mysql.database.azure.com',#os.environ['DB_HOST'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': os.environ['DB_HOST'],
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
