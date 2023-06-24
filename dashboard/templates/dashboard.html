@@ -60,7 +60,7 @@
       <form  method="post">
         {% csrf_token %}
         {{ form }}
-        <input type="submit" value="search">
+        <button id="searchbtn" type="submit" value=""><i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i></button>
       </form>
       
       <div class="all-messages">
@@ -68,21 +68,37 @@
         
         
 
-          {% if result is None %}
+          {% if result and result is None %}
             <div style="text-align: center;">No user found</div>
+           
+          {% elif not result %}
+          {%for c in convos %} 
+                <a href="#" onclick="chatTwo(this.id)" id="{{c.roomid}}">
+                    <div class="message">
+                        <div class="usr-pfp">
+                            <img class="pfp" src="https://i.imgur.com/NNYZ4nR.png" />
+                        </div>
+                        <div class="content">
+                            {{c.roomid}} <small>• 12:45PM</small>
+                            <div id="msg-content" class="msg-preview">{{c.content}}</div>
+                        </div>
+                    </div> 
+                </a>           
+            {% endfor %}
+
           {% else %}
-          
-            <a href="#" onclick="chat()">
-              <div class="message">
-                <div class="usr-pfp">
-                  <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
-                </div>
-                <div class="content">
-                  <small>{{ result.username }}• 12:45PM</small>
-                  <div class="msg-preview">Start the conversation...</div>
-                </div>
+          <a href="#" onclick="chat()">
+            <div class="message">
+              <div class="usr-pfp">
+                <img class="pfp" src="https://i.imgur.com/PxLz3cq.png" />
               </div>
-            </a>
+              <div class="content">
+                <small>{{ result.username }}• 12:45PM</small>
+                <div class="msg-preview">Start the conversation...</div>
+              </div>
+            </div>
+          </a>
+            
           {% endif %}
           
         
@@ -107,7 +123,6 @@
 
 <script>
 $(document).ready(function(){
-
  $("#load-dash").click(function(){
   $(".page").load("/dashboard");
   
@@ -127,6 +142,17 @@ $(document).ready(function(){
 });
   }
 </script> 
+
+<script>
+  function chatTwo(divID){
+      $(document).ready(function(){
+      console.log(divID);
+    $(".chat").load('/chat/'+divID);
+
+});
+  }
+</script> 
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

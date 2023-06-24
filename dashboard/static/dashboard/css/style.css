@@ -180,6 +180,21 @@ body, html{
     }
 /* ===================== */
 
+.search-form{
+    padding: 10px;
+    background-color:#e2e2e2 ;
+    outline: none;
+    border: none;
+    width: 85%;
+}
+
+#searchbtn{
+    border: none;
+    outline: none;
+    margin-left: 5px;
+    background-color: white;
+}
+
 .chat .message{
     margin-top: 10px;
     display: grid;

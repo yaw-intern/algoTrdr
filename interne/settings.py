@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+import redis
 
 
 
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'usr_chat',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net', 'https://'+ os.environ['WEBSITE_HOSTNAME']]
+CSRF_TRUSTED_ORIGINS = ['https://*.algoplatform.azurewebsites.net/', 'https://*.127.0.0.1/', 'https://algoplatform.azurewebsites.net']#, 'https://'+ os.environ['WEBSITE_HOSTNAME']]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,11 +81,18 @@ TEMPLATES = [
 WSGI_APPLICATION = 'interne.wsgi.application'
 ASGI_APPLICATION = "interne.asgi.application"
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "algo.redis.cache.windows.net:6380",
+    }
+}
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [("redis://:jA3QJamfNOpYlKhzBrne5RxWlIR1VIed@redis-14711.c247.eu-west-1-1.ec2.cloud.redislabs.com:14711")],
         },
     },
 }
@@ -111,10 +119,10 @@ LOGGING = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ['DB_NAME'],
-        'USER': os.environ['DB_USER'],
-        'PASSWORD': os.environ['DB_PASS'],
-        'HOST': os.environ['DB_HOST'],
+        'NAME': 'algotrader',#os.environ['DB_NAME'],
+        'USER': 'abuakunathan',#os.environ['DB_USER'],
+        'PASSWORD': '!Zekrom1245&',#os.environ['DB_PASS'],
+        'HOST': 'algotraddb.mysql.database.azure.com',#os.environ['DB_HOST'],
         'PORT': '3306',
         'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
